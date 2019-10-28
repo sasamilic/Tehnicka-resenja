@@ -1,0 +1,55 @@
+[System]
+Name='T2 - Sugeno - nas rad'
+Type='sugeno'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=9
+AndMethod='prod'
+OrMethod='probor'
+ImpMethod='prod'
+AggMethod='sum'
+DefuzzMethod='wtaver'
+TypeRedMethod='Karnik-Mendel'
+outputType='icrisp'
+
+[Input1]
+Name='input1'
+Range=[0 60]
+NumMFs=3
+MF1U='mf1U':'trimf',[0 0 20 1]
+MF1L='shortU':'trimf',[0 0 15 0.8]
+MF2U='mf2U':'trapmf',[5 25 35 55 1]
+MF2L='moddleU':'trapmf',[10 28 32 50 0.8]
+MF3U='mf3U':'trimf',[40 60 60 1]
+MF3L='longU':'trimf',[45 60 60 0.8]
+
+[Input2]
+Name='input2'
+Range=[-5 105]
+NumMFs=3
+MF1U='mf1U':'trapmf',[-5 -5 6 73 1]
+MF1L='lowL':'trimf',[-5 -5 38 1]
+MF2U='Medium':'trapmf',[12 38 63 89 1]
+MF2L='mediumL':'trapmf',[25 42 58 75 1]
+MF3U='mf3U':'trapmf',[28 95 105 105 1]
+MF3L='highL':'trimf',[62 105 105 1]
+
+[Output1]
+Name='output1'
+Range=[-1 1]
+NumMFs=3
+MF1='mf1':'constant',[0 0]
+MF2='mf2':'constant',[0.5 0.5]
+MF3='mf3':'constant',[1 1]
+
+[Rules]
+1 1, 1 (1) : 1
+2 2, 2 (1) : 1
+3 3, 3 (1) : 1
+1 2, 1 (1) : 1
+2 1, 1 (1) : 1
+1 3, 2 (1) : 1
+3 1, 2 (1) : 1
+2 3, 3 (1) : 1
+3 2, 3 (1) : 1
